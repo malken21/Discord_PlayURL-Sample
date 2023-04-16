@@ -15,6 +15,7 @@ CONFIG = read("config.json")
 # "config.json" のデータ 代入
 URL = CONFIG["URL"]
 TOKEN = CONFIG["TOKEN"]
+GUILD = int(CONFIG["GUILD"])
 VOICE_CHANNEL = int(CONFIG["VOICE_CHANNEL"])
 
 
@@ -24,7 +25,7 @@ class MyClient(discord.Client):
         print(f'Logged on as {self.user}!')
 
         # ボイスチャンネル取得
-        channel = client.get_channel(VOICE_CHANNEL)
+        channel = client.get_guild(GUILD).get_channel(VOICE_CHANNEL)
         # ボイスチャンネルに入る
         voice_client = await channel.connect()
 

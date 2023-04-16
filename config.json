@@ -1,5 +1,6 @@
 {
     "URL": "Video or Audio URL",
     "TOKEN": "Discord Token",
+    "GUILD": "Discord Server ID",
     "VOICE_CHANNEL": "voice channel"
 }
