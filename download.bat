@@ -1,2 +1,0 @@
-python download.py
-pause
