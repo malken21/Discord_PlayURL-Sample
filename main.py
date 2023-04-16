@@ -1,18 +1,34 @@
 import discord
 import download
+import json
 
-URL = "Video or Audio URL"
-TOKEN = "Discord Token"
-VOICE_CHANNEL = "voice channel"
+
+# 読み込み
+def read(path):
+    with open(path, 'r', encoding="utf-8") as file:
+        return json.load(file)
+
+
+# "config.json" 読み込み
+CONFIG = read("config.json")
+
+# "config.json" のデータ 代入
+URL = CONFIG.URL
+TOKEN = CONFIG.TOKEN
+VOICE_CHANNEL = CONFIG.VOICE_CHANNEL
 
 
 class MyClient(discord.Client):
+    # 起動が完了したら
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
 
+        # ボイスチャンネル取得
         channel = client.get_channel(VOICE_CHANNEL)
+        # ボイスチャンネルに入る
         voice_client = await channel.connect()
 
+        # ビデオ or サウンド 再生
         voice_client.play(discord.FFmpegPCMAudio(download.load(
             URL
         )))
