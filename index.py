@@ -13,9 +13,9 @@ def read(path):
 CONFIG = read("config.json")
 
 # "config.json" のデータ 代入
-URL = CONFIG.URL
-TOKEN = CONFIG.TOKEN
-VOICE_CHANNEL = CONFIG.VOICE_CHANNEL
+URL = CONFIG["URL"]
+TOKEN = CONFIG["TOKEN"]
+VOICE_CHANNEL = int(CONFIG["VOICE_CHANNEL"])
 
 
 class MyClient(discord.Client):
